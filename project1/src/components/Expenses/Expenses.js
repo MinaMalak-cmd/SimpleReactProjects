@@ -5,8 +5,19 @@ import Card from '../UI/Card';
 import './Expenses.css';
 
 const Expenses = (props) => {
+  console.log("items are", props.items)
   return (
     <Card className="expenses">
+      {/* {items.map((el) => {
+        <ExpenseItem
+        title={el.title}
+        amount={el.amount}
+        date={el.date} 
+        key={el.id}
+        />
+      //  return(el.title)
+
+})} */}
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}

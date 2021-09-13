@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import ExpenseDate from './ExpenseDate';
 import Card from '../UI/Card';
 import './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
-
+  // function clickHandler() {}
   const [title, setTitle] = useState(props.title);
+  console.log('ExpenseItem evaluated by React');
+  
   const clickHandler = () => {
-    setTitle(title==props.title?'Updated!':props.title);
+    setTitle('Updated!');
+    console.log(title);
   };
-  const changleHandler =(e)=>{
-    let val =e.target.value;
-   setTitle(val)  
-  }
+
   return (
     <Card className='expense-item'>
       <ExpenseDate date={props.date} />
@@ -21,7 +21,6 @@ const ExpenseItem = (props) => {
         <h2>{title}</h2>
         <div className='expense-item__price'>${props.amount}</div>
       </div>
-      <input type="text" onChange={changleHandler} />
       <button onClick={clickHandler}>Change Title</button>
     </Card>
   );
