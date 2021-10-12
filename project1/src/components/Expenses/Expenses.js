@@ -6,24 +6,24 @@ import "./Expenses.css";
 import ExpenseFilter from "./ExpenseFilter";
 import ExpensesChart from "./ExpensesChart";
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState("");
+  const [filteredYear, setFilteredYear] = useState("2019");
   const filteredYearExpenses = (e) => {
     setFilteredYear(e);
   };
   const filteredExpenses = props.items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
-  // let tempContent = <h1 className="expenses-list__fallback">No items here</h1>;
-    let tempContent = (
-      props.items.map((expense) => (
-      <ExpenseItem
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-        key={expense.id}
-      />
-    ))
-    );
+  let tempContent = <h1 className="expenses-list__fallback">No items here</h1>;
+    // let tempContent = (
+    //   props.items.map((expense) => (
+    //   <ExpenseItem
+    //     title={expense.title}
+    //     amount={expense.amount}
+    //     date={expense.date}
+    //     key={expense.id}
+    //   />
+    // ))
+    // );
 
   if (filteredExpenses.length > 0) {
     tempContent = filteredExpenses.map((expense) => (
