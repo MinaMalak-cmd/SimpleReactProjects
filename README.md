@@ -1,4 +1,8 @@
 # First Project 
 
-### practice some examples for understanding of useState
+### create a dynamic UI to get exposure into basic react concepts such as : 
+      * state hook
+      * communication between components
+      * conditional rendering
+      * events & forms 
 
