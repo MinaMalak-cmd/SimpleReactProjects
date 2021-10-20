@@ -7,18 +7,26 @@ function App() {
   const [content, setContent] = useState(<p>No items found</p>);
   const fetchHandler = async () => {
     setContent(<p>Loading ...</p>);
-    let response = await fetch(url);
-    let data = await response.json();
-    let tempMovies = [];
-    tempMovies = data.results.map((movie) => {
-      return {
-        key: movie.episode_id,
-        title: movie.title,
-        openingText: movie.opening_crawl,
-        releaseDate: movie.release_date,
-      };
-    });
-    setContent(<MoviesList movies={tempMovies} />);
+    try{
+      let response = await fetch(url);
+      if(! response.ok) throw new Error('something went wrong dear')
+      let data = await response.json();
+      let tempMovies = [];
+      tempMovies = data.results.map((movie) => {
+        return {
+          key: movie.episode_id,
+          title: movie.title,
+          openingText: movie.opening_crawl,
+          releaseDate: movie.release_date,
+        };
+      });
+      setContent(<MoviesList movies={tempMovies} />);
+    }catch(error){
+      console.log(error)
+      setContent(<p>{error.message}</p>);
+    }finally{
+        console.log('done')
+    }
   };
   return (
     <React.Fragment>
