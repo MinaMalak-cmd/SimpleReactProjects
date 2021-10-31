@@ -5,7 +5,6 @@ import "./App.css";
 import Trial from "./Trial";
 
 function App() {
-  // const url = "http://localhost:62962/api/Masses";
   // const url = "https://swapi.dev/api/films/";
   const url =
     "https://react-http-a3859-default-rtdb.firebaseio.com/movies.json";
