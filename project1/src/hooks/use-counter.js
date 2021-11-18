@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 
-const useCounter = (callbackfn) => {
+const useCounter = (forwards=true) => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCounter(callbackfn);    
+      forwards
+        ? setCounter((counter) => counter + 1)
+        : setCounter((counter) => counter - 1);    
     }, 1000);
     return () => clearInterval(interval);
-  }, [callbackfn]);
+  }, [forwards]);
   return counter;
 };
 
