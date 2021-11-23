@@ -18,7 +18,6 @@ function App() {
   }
   [isLoading, error, tempTasks] = useFetch(url,options,HandleRequest);
   const taskAddHandler = (task) => { 
-    console.log(task)   
       setTasks((prevTasks) => prevTasks.concat(task));
   };
   return(

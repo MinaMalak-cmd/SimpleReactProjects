@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const useFetch = (url,options,HandleRequest) => {
+const useFetch = (url,options={},HandleRequest) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   let data =[];
@@ -8,7 +8,7 @@ const useFetch = (url,options,HandleRequest) => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch(url, options?options:"");
+      const response = await fetch(url, options);
       if (!response.ok) {
         throw new Error("Request failed!");
       }
@@ -21,7 +21,7 @@ const useFetch = (url,options,HandleRequest) => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [url]);
   return [isLoading, error, data];
 };
 export default useFetch;
